@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@source "../views/**/*.blade.php";
+
+@theme {
+    --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+    --color-forest: #173D32;
+    --color-deep: #102C24;
+    --color-cream: #F5F2EA;
+    --color-beige: #EAE5D9;
+    --color-ink: #26352F;
+    --color-muted: #7C827C;
+}
+
+@layer base {
+    html { scroll-behavior: smooth; }
+    body { @apply bg-cream font-sans text-ink antialiased; }
+    :focus-visible { @apply outline-2 outline-offset-2 outline-forest; }
+    [x-cloak] { display: none !important; }
+}
+
+@layer components {
+    .container-page { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+    .section { @apply py-16 sm:py-20; }
+    .eyebrow { @apply text-xs font-semibold tracking-widest text-forest/70 uppercase; }
+    .h-section { @apply mt-2 text-3xl font-extrabold tracking-tight text-forest sm:text-4xl; }
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors; }
+    .btn-primary { @apply bg-forest text-white hover:bg-deep; }
+    .btn-light { @apply bg-white text-forest hover:bg-cream; }
+    .btn-outline { @apply border border-forest/25 text-forest hover:bg-forest hover:text-white; }
+    .link-arrow { @apply inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:underline underline-offset-4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after { transition-duration: 0.01ms !important; animation: none !important; scroll-behavior: auto !important; }
+}

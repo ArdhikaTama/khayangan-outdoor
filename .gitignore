@@ -1,0 +1,48 @@
+# Dependensi
+/vendor
+/node_modules
+
+# Environment & kredensial
+.env
+.env.backup
+.env.production
+.env.*.local
+
+# Build & cache
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/bootstrap/cache/*.php
+.phpunit.cache
+.phpunit.result.cache
+.php-cs-fixer.cache
+
+# Laravel (isi runtime)
+/storage/logs/*
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*.php
+/storage/app/public/*
+
+# Log & lainnya
+*.log
+npm-debug.log*
+yarn-error.log
+auth.json
+Homestead.json
+Homestead.yaml
+
+# Editor & OS
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+.DS_Store
+Thumbs.db
+
+# Database lokal (SQLite)
+/database/*.sqlite
+/database/*.sqlite-journal
