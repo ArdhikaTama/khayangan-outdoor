@@ -11,7 +11,7 @@ window.Alpine = Alpine;
  * Komponen pengecekan ketersediaan.
  * Tahap backend: ganti submit GET ke /katalog dengan fetch ke endpoint stok/alokasi unit.
  */
-Alpine.data('availability', (initial = {}) => ({
+Alpine.data('availability', (initial = {}, optional = false) => ({
     mulai: initial.mulai ?? '',
     selesai: initial.selesai ?? '',
     today: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10),
@@ -29,6 +29,7 @@ Alpine.data('availability', (initial = {}) => ({
     },
     validate() {
         this.error = '';
+        if (optional && !this.mulai && !this.selesai) return true;
         if (!this.mulai || !this.selesai) this.error = 'Tanggal mulai dan selesai wajib diisi.';
         else if (this.mulai < this.today) this.error = 'Tanggal mulai tidak boleh sudah berlalu.';
         else if (this.selesai < this.mulai) this.error = 'Tanggal selesai tidak boleh lebih awal dari tanggal mulai.';
