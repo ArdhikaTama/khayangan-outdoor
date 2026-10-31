@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/katalog', [CatalogController::class, 'index'])->name('katalog');
+Route::get('/katalog/{slug}', [CatalogController::class, 'show'])->name('katalog.show');
+
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'home')->name('home');
-    Route::get('/katalog', 'katalog')->name('katalog');
     Route::get('/cara-sewa', 'caraSewa')->name('cara-sewa');
     Route::get('/tentang-kami', 'tentang')->name('tentang');
     Route::get('/blog', 'blog')->name('blog');
 
-    // Placeholder sementara (ganti saat fitur dibuat)
+    // Placeholder sementara
     Route::get('/keranjang', 'placeholder')->defaults('judul', 'Keranjang Sewa')->name('keranjang');
     Route::get('/masuk', 'placeholder')->defaults('judul', 'Masuk')->name('masuk');
     Route::get('/daftar', 'placeholder')->defaults('judul', 'Daftar')->name('daftar');
